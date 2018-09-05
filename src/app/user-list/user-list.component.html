@@ -1,0 +1,20 @@
+<h1>Users List</h1>
+<section class="half">
+  <strong>List of Users from API</strong>
+  <nav *ngFor="let user of users$ | async">
+
+    <a  (click)="userClick(user.id)" tabindex="0" href="javascript: void(0); ">
+      {{ user.name }}
+    </a>
+  </nav>
+</section>
+<aside class="user" *ngIf="(user$ | async)?.username" >
+  <strong>User information</strong>
+  <div >
+     <div class="username" *ngIf="(user$ | async)?.name">Name: {{ (user$ | async)?.name }}</div> 
+     <div *ngIf="(user$ | async)?.email">email: {{ (user$ | async)?.email }}</div> 
+     <div *ngIf="(user$ | async)?.phone">phone: {{ (user$ | async)?.phone }}</div> 
+     <div *ngIf="(user$ | async)?.website">website: {{ (user$ | async)?.website }}</div> 
+     <div *ngIf="(user$ | async)?.username">username: {{ (user$ | async)?.username }}</div> 
+  </div>
+</aside>

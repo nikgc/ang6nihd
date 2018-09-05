@@ -1,0 +1,26 @@
+<h1>Posts List</h1>
+<section class="half">
+  <strong>List of Posts from API</strong>
+  <div *ngFor="let post of posts$ | async">
+      <label *ngIf="post?.title"><strong>Title:</strong>  {{ post.title }}</label> 
+  </div>
+</section>
+<aside class="post" >
+    <div class="btn"> <button type="button" (click)="initForm()">Create Post</button> </div>
+
+    <form [formGroup]="addPost" (ngSubmit)="onSubmit(addPost.value)" *ngIf="createClicked">
+        <div class="row">
+          <label for="title">Title :</label>&nbsp;
+          <input type="text" size="30" formControlName="title" placeholder="Title" name="title" id="title">
+        </div>
+        <div *ngIf="addPost.controls.title.touched && !addPost.controls.title.pristine && addPost.controls.title.errors">Required Alphanumeric and a maximum of 24 characters</div>
+        <div class="row">
+          <label for="body">Body:</label>&nbsp;
+          <textarea formControlName="body"  cols="30" rows="10"></textarea>
+        </div>
+        <div *ngIf="addPost.controls.body.touched && !addPost.controls.body.pristine && addPost.controls.body.errors">Required and a maximum of 24 characters</div>
+        <input type="submit" value="Submit" [disabled]="!addPost.valid">
+    </form>
+    
+  
+</aside>

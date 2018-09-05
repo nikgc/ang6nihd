@@ -1,0 +1,16 @@
+.half {
+    /* can use flexbox as well */
+ float: left;
+ margin-right: 10px;
+ width: 50%;
+}
+
+.post {
+    /* can use flexbox as well */
+ float: left;
+ margin-left: 100px;
+ width: 40%;
+ 
+}
+
+
